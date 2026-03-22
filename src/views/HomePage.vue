@@ -3,7 +3,7 @@ import RepoCard from '@/components/RepoCard.vue';
 import SearchBar from '@/components/SearchBar.vue';
 import { useSearch } from '@/composables/useSearch';
 
-const { results, loading, error, search, hasSearched } = useSearch()
+const { results, loading, error, search, hasSearched, loadMore } = useSearch()
 
 
 </script>
@@ -26,6 +26,8 @@ const { results, loading, error, search, hasSearched } = useSearch()
   <div v-else>
      <RepoCard v-for="repo in results" :key="repo.id" :repo="repo" />
   </div>
+
+  <button v-if="hasSearched && results.length > 0" :disabled="loading" class="w-2xl h-12" @click="loadMore" type="button">Load More</button>
 </template>
 
 <style scoped>

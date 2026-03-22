@@ -2,10 +2,10 @@ import type { SearchResponse } from "@/types"
 
 const baseSearchRepoURL = "https://api.github.com/search/repositories?"
 
-export const searchRepositories = async (query: string) => {
+export const searchRepositories = async (query: string, page: number) => {
 
   // utilized URLSearchParams to handle the encoding automatically.
-  const params = new URLSearchParams({ q: query })
+  const params = new URLSearchParams({ q: query, page: String(page) })
   
   // added auth header for higher limit for requests
   const res = await fetch(baseSearchRepoURL + params, {
