@@ -1,14 +1,5 @@
 <script setup lang="ts">
-import { useSearch } from './composables/useSearch';
-import { watch } from 'vue';
-  const { results, search } = useSearch()
-
-  search("vue")
-  
-  watch(results, (val) => {
-    console.log(val)
-  })
-
+import HomePage from './views/HomePage.vue';
 </script>
 
 <template>
@@ -16,7 +7,7 @@ import { watch } from 'vue';
 
   </header>
   <main>
-
+    <HomePage />
   </main>
 </template>
 
