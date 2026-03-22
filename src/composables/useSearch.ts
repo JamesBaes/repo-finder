@@ -2,20 +2,20 @@ import { searchRepositories } from "@/services/github";
 import type { Repository } from "@/types";
 import { ref } from "vue";
 
+
+// reactive variables
+const results = ref<Repository[]>([])
+const loading = ref(false)
+const error = ref<string | null>(null)
+const hasSearched = ref(false)
+const currentQuery = ref("")
+const page = ref(1)
+
+
 // composable for searching github repositories
 export const useSearch = () => {
 
-  // reactive variables
-  const results = ref<Repository[]>([])
-  const loading = ref(false)
-  const error = ref<string | null>(null)
-  const hasSearched = ref(false)
-  const currentQuery = ref("")
-  const page = ref(1)
-
-
   const loadMore = async () => {
-    
     loading.value = true
     error.value = null
 
@@ -32,7 +32,6 @@ export const useSearch = () => {
   }
 
   const search = async (query: string) => {
-
     loading.value = true
     error.value = null
     currentQuery.value = query

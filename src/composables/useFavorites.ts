@@ -1,12 +1,13 @@
 import { ref } from "vue";
 import type { Repository } from "@/types";
 
+
+// load favorites
+const stored = localStorage.getItem('favorites')
+const favorites = ref<Repository[]>(stored ? JSON.parse(stored) : [])
+
 // composable for managing favorite repositories using localStorage
 export const useFavorites = () => {
-
-  // load favorites
-  const stored = localStorage.getItem('favorites')
-  const favorites = ref<Repository[]>(stored ? JSON.parse(stored) : [])
 
   const addFavorite = (repo: Repository) => {
     favorites.value = [...favorites.value, repo]
