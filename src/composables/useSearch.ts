@@ -9,6 +9,7 @@ export const useSearch = () => {
   const results = ref<Repository[]>([])
   const loading = ref(false)
   const error = ref<string | null>(null)
+  const hasSearched = ref(false)
 
 
   const search = async (query: string) => {
@@ -23,9 +24,10 @@ export const useSearch = () => {
       error.value = "An error occurred fetching repositories."
     } finally {
       loading.value = false
+      hasSearched.value = true
     }
   }
 
-  return { results, loading, error, search} 
+  return { results, loading, error, search, hasSearched } 
 }
 
