@@ -1,11 +1,13 @@
 <script setup lang="ts">
-  import { searchRepositories } from './services/github';
+import { useSearch } from './composables/useSearch';
+import { watch } from 'vue';
+  const { results, search } = useSearch()
 
-  try {
-    console.log(searchRepositories("fuwa-manager"))
-  } catch (err) {
-    console.log(err)
-  } 
+  search("vue")
+  
+  watch(results, (val) => {
+    console.log(val)
+  })
 
 </script>
 
