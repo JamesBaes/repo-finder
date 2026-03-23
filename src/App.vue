@@ -8,9 +8,7 @@ import FavoritesPage from './views/FavoritesPage.vue';
 
   </header>
   <main>
-    <!-- <HomePage /> -->
-
-    <FavoritesPage />
+    <RouterView />
   </main>
 </template>
 
