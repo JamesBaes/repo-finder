@@ -24,7 +24,6 @@ npm install && npm run dev
 
 ## Potential Future Improvements
 
-- Debounced search
 - Sort by stars or last updated date
 - Filter by programming language
 - Unit tests for composables
