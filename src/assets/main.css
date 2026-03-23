@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+
+@theme {
+  --color-primary: #154e55;
+  --color-accent: #017f7c;
+  --color-background: #FFFFFF;
+  --color-text: #000000;
+  --font-sans: 'Noto Sans', sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+}

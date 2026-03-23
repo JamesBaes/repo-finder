@@ -25,16 +25,28 @@
 </script>
 
 <template>
-  <div @click="routeToRepo" class="border-8 border-black rounded-lg p-4">
-    <button v-if="!isFavorite(repo)" @click.stop="toggleFavorite(repo)" class="w-2xl h-12">Favorite</button>
-    <button v-else @click.stop="toggleFavorite(repo)">Unfavorite</button>
-    
-    <h2 class="text-lg font-bold">{{ repo.name }}</h2>
-    <p class="text-sm">{{ repo.description }}</p>
-    <p class="text-sm">{{ repo.owner.login }}</p>
-    <p class="text-sm">{{ repo.stargazers_count }}</p>
-    <p class="text-sm">{{ repo.language }}</p>
-    <p class="text-sm">{{ repo.updated_at }}</p>
+  <div @click="routeToRepo" class="bg-white border border-gray-200 rounded-xl p-5 cursor-pointer hover:shadow-md transition-shadow duration-200">
+    <div class="flex items-start justify-between gap-4">
+      <div class="flex-1 min-w-0">
+        <h2 class="text-base font-semibold text-gray-900 truncate">{{ repo.name }}</h2>
+        <p class="text-sm text-gray-500">{{ repo.owner.login }}</p>
+        <p v-if="repo.description" class="text-sm text-gray-600 mt-2 line-clamp-2">{{ repo.description }}</p>
+      </div>
+      <!-- .stop to prevent the card from firing routeToRepo -->
+      <button
+        @click.stop="toggleFavorite(repo)"
+        class="shrink-0 px-3 py-1 text-xs font-medium rounded-full border hover:cursor-pointer transition-colors duration-200"
+        :class="isFavorite(repo) ? 'bg-accent text-white border-accent' : 'text-accent border-accent hover:bg-accent hover:text-white'"
+      >
+        {{ isFavorite(repo) ? 'Saved' : 'Save' }}
+      </button>
+    </div>
+
+    <div class="flex items-center gap-4 mt-4 text-xs text-gray-500">
+      <span v-if="repo.language">{{ repo.language }}</span>
+      <span>★ {{ repo.stargazers_count.toLocaleString() }}</span>
+      <span>Updated {{ new Date(repo.updated_at).toLocaleDateString() }}</span>
+    </div>
   </div>
 </template>
 
