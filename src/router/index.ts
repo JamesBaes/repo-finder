@@ -1,8 +1,25 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import HomePage from '@/views/HomePage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [],
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: HomePage,
+    },
+    {
+      path: '/favorites',
+      name: 'favorites',
+      component: () => import('@/views/FavoritesPage.vue')
+    },
+    {
+      path: '/repo/:owner/:name',
+      name: 'repo-details',
+      component: () => import('@/views/RepoDetails.vue')
+    }
+  ],
 })
 
 export default router
