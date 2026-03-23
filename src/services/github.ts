@@ -8,10 +8,8 @@ export const searchRepositories = async (query: string, page: number) => {
   // utilized URLSearchParams to handle the encoding automatically.
   const params = new URLSearchParams({ q: query, page: String(page) })
   
-  // added auth header for higher limit for requests
   const res = await fetch(baseSearchRepoURL + params, {
     headers: {
-      Authorization: `Bearer ${import.meta.env.VITE_AUTHORIZATION_TOKEN}`,
       Accept: 'application/vnd.github+json'
     }
   })
@@ -27,7 +25,6 @@ export const getRepository = async (owner: string, name: string) => {
 
   const res = await fetch(`${baseRepoDetailsURL}/${owner}/${name}`, {
     headers: {
-      Authorization: `Bearer ${import.meta.env.VITE_AUTHORIZATION_TOKEN}`,
       Accept: 'application/vnd.github+json'
     }
   })
@@ -44,7 +41,6 @@ export const getRepositoryContributors = async (owner: string, name: string) => 
 
   const res = await fetch(`${baseRepoDetailsURL}/${owner}/${name}/contributors`, {
     headers: {
-      Authorization: `Bearer ${import.meta.env.VITE_AUTHORIZATION_TOKEN}`,
       Accept: 'application/vnd.github+json'
     }
   })
