@@ -15,7 +15,9 @@ const handleSearch = () => {
     <svg class="w-5 h-5 text-gray-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
     </svg>
+    <label for="search" class="sr-only">Search repositories</label>
     <input
+      id="search"
       type="text"
       v-model="query"
       placeholder="Search repositories..."
