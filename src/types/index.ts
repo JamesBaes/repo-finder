@@ -14,6 +14,7 @@ export interface Repository {
   name: string
   full_name: string
   description: string
+  stargazers_count: number
   language: string
   updated_at: string
   owner: RepositoryOwner
@@ -27,7 +28,7 @@ export interface License {
   node_id: string
 }
 
-export interface RepoDetail extends Repository{
+export interface RepoDetail extends Repository {
   forks_count: number
   watchers_count: number
   open_issues_count: number
@@ -37,4 +38,11 @@ export interface RepoDetail extends Repository{
   license: License | null
   created_at: string
   default_branch: string
+}
+
+export interface Contributor {
+  login: string
+  avatar_url: string
+  contributions: number
+  html_url: string
 }
