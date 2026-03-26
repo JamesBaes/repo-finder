@@ -19,7 +19,6 @@ npm install && npm run dev
 
 ## Known Limitations
 
-- No debouncing on the search input
 - Favorites are localStorage only, meaning they aren't synced across devices
 
 ## Potential Future Improvements
